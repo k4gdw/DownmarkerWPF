@@ -6,11 +6,11 @@ using System.Windows;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("MarkPad")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("A Markdown Editor/Viewer")]
 [assembly: AssemblyProduct("MarkPad")]
 [assembly: AssemblyCompany("Code52")]
 [assembly: AssemblyCopyright("Copyright © Code52 2013")]
-[assembly: AssemblyVersion("0.0.0.0")]
+[assembly: AssemblyVersion("0.9.0.0")]
 [assembly: AssemblyFileVersion("0.0.0.0")]
 
 // Setting ComVisible to false makes the types in this assembly not visible 

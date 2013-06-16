@@ -106,6 +106,7 @@ packages
 # our output folder for build artifacts
 artifacts/*.nupkg
 artifacts/ClickOnce/
+artifacts/*.msi
 src/GlobalAssemblyInfo.cs
 
 Thumbs.db

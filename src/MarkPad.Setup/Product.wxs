@@ -5,35 +5,33 @@
 
   <?define VERSION="!(bind.FileVersion.MarkPad.exe)"?>
 
-  <Product 
-    Id="*" 
-    Name="MarkPad" 
-    Language="1033" 
-    Version="$(var.VERSION)" 
-    Manufacturer="Code52" 
-    UpgradeCode="a57239ae-b389-4d48-bc6e-6cb96b34b7a6"
-  >
-    
-    <Package 
-      Description="MarkPad"
-      Manufacturer="Code52"
-      InstallerVersion="200" 
-      Compressed="yes" 
-      InstallPrivileges="limited" 
-      InstallScope="perUser"
-      Platform="$(var.Platform)"
-    />
+  <Product  Id="*"
+            Name="MarkPad"
+            Language="1033"
+            Version="$(var.VERSION)"
+            Manufacturer="Code52"
+            UpgradeCode="a57239ae-b389-4d48-bc6e-6cb96b34b7a6" >
+
+    <Package Description="MarkPad" 
+             Manufacturer="Code52" 
+             InstallerVersion="200"
+             Compressed="yes"
+             InstallPrivileges="limited"
+             InstallScope="perUser"
+             Platform="$(var.Platform)" />
 
     <Upgrade Id="a57239ae-b389-4d48-bc6e-6cb96b34b7a6">
       <UpgradeVersion OnlyDetect='no' Property='PREVIOUSFOUND'
                       Minimum='0.0.0' IncludeMinimum='yes'
-                      Maximum='$(var.VERSION)' IncludeMaximum='no' />
+                      Maximum='$(var.VERSION)' IncludeMaximum='yes' />
       <UpgradeVersion OnlyDetect='yes' Property='NEWERFOUND'
-                      Minimum='$(var.VERSION)' IncludeMinimum='no' />
+                      Minimum='$(var.VERSION)' IncludeMinimum='yes' />
     </Upgrade>
 
-    <Media Id="1" Cabinet="MarkpadSetup.cab" EmbedCab="yes" />
-    
+    <Media Id="1"
+           Cabinet="MarkpadSetup.cab"
+           EmbedCab="yes" />
+
     <Directory Id="TARGETDIR" Name="SourceDir">
       <Directory Id="LocalAppDataFolder">
         <Directory Id="INSTALLLOCATION" Name="MarkPad" />
@@ -43,25 +41,32 @@
       </Directory>
     </Directory>
 
-    <Feature Id="ProductFeature" Title="MarkPad" Level="1">
+    <Feature Id="ProductFeature"
+             Title="MarkPad" Level="1">
       <ComponentRef Id="MarkPadFiles" />
       <ComponentRef Id="ThemesComponent"/>
       <ComponentRef Id="ApplicationShortcut" />
     </Feature>
-    
+
     <UIRef Id="WixUI_Minimal" />
     <UI />
-    
+
     <!-- "Top" banner when the app is actually installing -->
-    <WixVariable Id="WixUIBannerBmp" Value="banner.bmp" />
+    <WixVariable Id="WixUIBannerBmp"
+                 Value="banner.bmp" />
 
     <!-- "side" image on EULA/etc-->
-    <WixVariable Id="WixUIDialogBmp" Value="dlgbmp.bmp" />
-    <WixVariable Id="WixUILicenseRtf" Value="license.rtf" />
+    <WixVariable Id="WixUIDialogBmp"
+                 Value="dlgbmp.bmp" />
+    <WixVariable Id="WixUILicenseRtf"
+                 Value="license.rtf" />
 
-    <Icon Id="icon.ico" SourceFile="$(var.PROJECTPATH)/markpad.ico"/>
-    <Property Id="ARPPRODUCTICON" Value="icon.ico" />
-    <Property Id="ARPHELPLINK" Value="http://code52.org/DownmarkerWPF/" />
+    <Icon Id="icon.ico"
+          SourceFile="$(var.PROJECTPATH)/markpad.ico"/>
+    <Property Id="ARPPRODUCTICON"
+              Value="icon.ico" />
+    <Property Id="ARPHELPLINK"
+              Value="http://code52.org/DownmarkerWPF/" />
 
     <PropertyRef Id="NETFRAMEWORK40FULL" />
 
@@ -69,10 +74,12 @@
       <![CDATA[Installed OR NETFRAMEWORK40FULL]]>
     </Condition>
 
-    <CustomAction Id='NoDowngrade' Error='A later version of MarkPad is already installed.' />
+    <CustomAction Id='NoDowngrade'
+                  Error='A later version of MarkPad is already installed.' />
 
     <InstallExecuteSequence>
-      <Custom Action='NoDowngrade' After='FindRelatedProducts'>NEWERFOUND</Custom>
+      <Custom Action='NoDowngrade'
+              After='FindRelatedProducts'>NEWERFOUND</Custom>
       <RemoveExistingProducts After="InstallInitialize"/>
     </InstallExecuteSequence>
 
